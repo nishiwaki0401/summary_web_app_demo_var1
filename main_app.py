@@ -1,4 +1,4 @@
-import youtube-transcript-api
+from youtube_transcript_api import YouTubeTranscriptApi
 import streamlit as st
 from langchain.chat_models import ChatOpenAI
 from langchain.callbacks import get_openai_callback
