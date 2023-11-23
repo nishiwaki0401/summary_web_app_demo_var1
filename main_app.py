@@ -4,6 +4,11 @@ from langchain.callbacks import get_openai_callback
 from langchain.prompts import PromptTemplate
 from langchain.chains.summarize import load_summarize_chain
 from langchain.chains.combine_documents.base import Document
+from langchain.schema import (
+    SystemMessage,
+    HumanMessage,
+    AIMessage
+)
 
 def init_page():
     st.set_page_config(
