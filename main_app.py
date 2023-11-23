@@ -16,6 +16,15 @@ def init_page():
     st.sidebar.title("モデル選択")
     st.session_state.costs = []
 
+def init_messages():
+    # サイドバーにボタンを設置
+    clear_button = st.sidebar.button("履歴削除", key="clear")
+    if clear_button or "messages" not in st.session_state:
+        st.session_state.messages = [
+            SystemMessage(content="デモ段階であるため、ただchatgptのapiを使用してwebappを作成しただけになっているが今後要約アプリとして工夫していく")
+        ]
+        st.session_state.costs = []
+
 def select_model():
     model = st.sidebar.radio("Choose a model:", ("GPT-3.5", "GPT-4"))
     if model == "GPT-3.5":
@@ -63,6 +72,7 @@ def summarize(llm, docs):
 def main():
     init_page()
     llm = select_model()
+    init_messages()
 
     container = st.container()
     response_container = st.container()
