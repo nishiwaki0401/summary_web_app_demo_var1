@@ -1,4 +1,4 @@
-pip install youtube-transcript-api
+！pip install youtube-transcript-api
 
 import streamlit as st
 from langchain.chat_models import ChatOpenAI
