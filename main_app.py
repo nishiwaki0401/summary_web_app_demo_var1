@@ -19,7 +19,7 @@ def init_messages():
     clear_button = st.sidebar.button("履歴削除", key="clear")
     if clear_button or "messages" not in st.session_state:
         st.session_state.messages = [
-            SystemMessage(content="デモ段階であるため、ただchatgptのapiを使用してwebappを作成しただけになっているが今後要約アプリとして工夫していく")
+            SystemMessage(content="デモ段階であるため、今後要約アプリとして工夫していく")
         ]
         st.session_state.costs = []
 
@@ -44,7 +44,7 @@ def main():
     llm = select_model()
     init_messages()
 
-    user_input = st.text_area("質問したい内容を打って下さい")
+    user_input = st.text_area("要約したい内容をおしえてください！")
 
     if st.button("要約する"):
         st.session_state.messages.append(HumanMessage(content=user_input))
