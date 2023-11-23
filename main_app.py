@@ -3,7 +3,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.callbacks import get_openai_callback
 from langchain.prompts import PromptTemplate
 from langchain.chains.summarize import load_summarize_chain
-
+from langchain.chains.combine_documents.base import Document
 
 def init_page():
     st.set_page_config(
@@ -14,7 +14,6 @@ def init_page():
     st.sidebar.title("Options")
     st.session_state.costs = []
 
-
 def select_model():
     model = st.sidebar.radio("Choose a model:", ("GPT-3.5", "GPT-4"))
     if model == "GPT-3.5":
@@ -24,11 +23,9 @@ def select_model():
 
     return ChatOpenAI(temperature=0, model_name=model_name)
 
-
 def get_text_input():
     text_input = st.text_area("テキストを入力してください:", key="input", height=200)
     return text_input
-
 
 def summarize(llm, docs):
     prompt_template = """Write a concise Japanese summary of the following transcript of Youtube Video.
@@ -51,10 +48,15 @@ def summarize(llm, docs):
             verbose=True,
             prompt=PROMPT
         )
-        response = chain({"input_documents": docs}, return_only_outputs=True)
+
+        # Create a Document with page_content set to content
+        document = Document(
+            page_content=docs[0]["content"],
+            title=docs[0]["title"]
+        )
+        response = chain({"input_documents": [document]}, return_only_outputs=True)
         
     return response['output_text'], cb.total_cost
-
 
 def main():
     init_page()
@@ -67,6 +69,7 @@ def main():
         text_input = get_text_input()
 
     if text_input:
+        # Create a dictionary from the text input
         document = [{"content": text_input, "title": "User Input"}]
 
         with st.spinner("ChatGPT is typing ..."):
