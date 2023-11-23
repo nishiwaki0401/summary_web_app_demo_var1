@@ -1,5 +1,3 @@
-！pip install youtube-transcript-api
-
 import streamlit as st
 from langchain.chat_models import ChatOpenAI
 from langchain.callbacks import get_openai_callback
