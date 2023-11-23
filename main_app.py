@@ -7,11 +7,13 @@ from langchain.chains.combine_documents.base import Document
 
 def init_page():
     st.set_page_config(
-        page_title="Youtube Summarizer",
-        page_icon="🤗"
+        page_title="要約アプリ",
+        page_icon="🧠"
     )
-    st.header("Youtube Summarizer 🤗")
-    st.sidebar.title("Options")
+    st.header("要約アプリ 🧠")
+    
+    # サイドバーのタイトルを表示
+    st.sidebar.title("モデル選択")
     st.session_state.costs = []
 
 def select_model():
@@ -69,7 +71,7 @@ def main():
         text_input = get_text_input()
 
     if text_input:
-        # Create a dictionary from the text input
+        
         document = [{"content": text_input, "title": "User Input"}]
 
         with st.spinner("ChatGPT is typing ..."):
