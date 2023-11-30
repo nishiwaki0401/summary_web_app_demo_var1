@@ -58,7 +58,7 @@ def summarize(llm, docs):
 {text:}
 #出力形式
 要約した文章:
-出力した文章の句読点を含めた文字数:
+
 """
 
     PROMPT = PromptTemplate(template=prompt_template, input_variables=["text"])
