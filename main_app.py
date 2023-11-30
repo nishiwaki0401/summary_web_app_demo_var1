@@ -52,8 +52,7 @@ def summarize(llm, docs):
 
 ============
 
-ここから日本語で書いてね
-必ず3段落以内の200文字以内で簡潔にまとめること:
+日本の小学生でもわかるようにわかりやすくかつ必ず200文字以内で要約文を作成して下さい。:
 """
 
     PROMPT = PromptTemplate(template=prompt_template, input_variables=["text"])
