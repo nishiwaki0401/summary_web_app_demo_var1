@@ -44,15 +44,21 @@ def get_text_input():
     return text_input
 
 def summarize(llm, docs):
-    prompt_template = """Provide a summary of what was entered in the text in Japanese.
-
-============
-    
-{text}
-
-============
-
-10歳にもわかるように簡単な言葉に言い換えて要約を行って下さい。:
+    prompt_template = """
+    #命令書
+あなたはプロの編集者です。以下の制約条件に従って、入力する文章を要約してください。
+#制約条件
+・重要なキーワードを取りこぼさない。
+・文章の意味を変更しない。
+・架空の表現や言葉を使用しない。
+・入力する文章を句読点を含めて[文字数を入力]文字以内にまとめて出力。
+・要約した文章の句読点を含めた文字数を出力。
+・文章中の数値には変更を加えない。
+#入力する文章
+{text:}
+#出力形式
+要約した文章:
+出力した文章の句読点を含めた文字数:
 """
 
     PROMPT = PromptTemplate(template=prompt_template, input_variables=["text"])
