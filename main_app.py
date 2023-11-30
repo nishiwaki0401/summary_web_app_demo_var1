@@ -44,7 +44,7 @@ def get_text_input():
     return text_input
 
 def summarize(llm, docs):
-    prompt_template = """Write a concise Japanese summary of the following transcript of Youtube Video.
+    prompt_template = """Provide a summary of what was entered in the text in Japanese.
 
 ============
     
