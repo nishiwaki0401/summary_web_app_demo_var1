@@ -44,7 +44,7 @@ def get_text_input():
     return text_input
 
 def summarize(llm, docs):
-    prompt_template = """日本語で要約して下さい:
+    prompt_template = """Provide a summary of what was entered in the text in Japanese.:
 """
     PROMPT = PromptTemplate(template=prompt_template, input_variables=["text"])
 
