@@ -52,7 +52,7 @@ def summarize(llm, docs):
 
 ============
 
-日本の小学生でもわかるようにわかりやすくかつ必ず200文字以内で要約文を作成して下さい。:
+小学生などにもわかるように簡単な言葉に言い換えて要約を行って下さい。:
 """
 
     PROMPT = PromptTemplate(template=prompt_template, input_variables=["text"])
