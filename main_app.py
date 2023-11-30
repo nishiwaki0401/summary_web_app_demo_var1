@@ -52,7 +52,7 @@ def summarize(llm, docs):
 
 ============
 
-小学生などにもわかるように簡単な言葉に言い換えて要約を行って下さい。:
+10歳にもわかるように簡単な言葉に言い換えて要約を行って下さい。:
 """
 
     PROMPT = PromptTemplate(template=prompt_template, input_variables=["text"])
