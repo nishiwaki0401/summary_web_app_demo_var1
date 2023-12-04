@@ -44,13 +44,16 @@ def get_text_input():
     return text_input
 
 def summarize(llm, docs):
-    prompt_template = """
-    入力されたものを要約して下さい。
-#入力する文章
-{text:}
-#出力形式
-要約した文章:
+    prompt_template = """Write a concise Japanese summary of the following transcript of Youtube Video.
 
+============
+
+{text}
+
+============
+
+ここから日本語で書いてね
+必ず3段落以内の200文字以内で簡潔にまとめること:
 """
 
     PROMPT = PromptTemplate(template=prompt_template, input_variables=["text"])
