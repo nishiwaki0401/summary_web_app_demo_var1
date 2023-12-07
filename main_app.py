@@ -45,7 +45,7 @@ def get_text_input():
 
 def summarize(llm, docs):
     prompt_template = prompt_template = """
-入力された文章を段階的に要約して下さい。
+入力された文章を要約して下さい。成長の機会だと捉えて挑戦してください。自分を信じ限界を超えてください。
 #入力する文章
 {text:}
 #出力形式
